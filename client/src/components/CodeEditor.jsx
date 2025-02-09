@@ -5,7 +5,7 @@ import { Editor } from "@monaco-editor/react";
 import LanguageSelector from "./LanguageSelector";
 import Output from "./Output";
 
-const socket = io("http://localhost:4000");
+const socket = io("https://code-live-editor.glitch.me/");
 
 const CodeEditor = ({ roomId, username }) => {
   const editorRef = useRef();

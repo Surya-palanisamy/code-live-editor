@@ -17,7 +17,7 @@ app.use(cors());
 const rooms = {}; // Stores room data: code, language, and users
 
 io.on("connection", (socket) => {
-  console.log(`🔵 User connected: ${socket.id}`);
+  console.log(`User connected: ${socket.id}`);
 
   // Handle user joining a room
   socket.on("joinRoom", ({ roomId, username }) => {
@@ -39,7 +39,7 @@ io.on("connection", (socket) => {
     socket.emit("codeUpdate", rooms[roomId].code);
     socket.emit("languageUpdate", rooms[roomId].language);
 
-    console.log(`📢 ${username} joined room: ${roomId}`);
+    console.log(` ${username} joined room: ${roomId}`);
   });
 
   // Handle real-time code updates
@@ -73,7 +73,7 @@ io.on("connection", (socket) => {
         delete rooms[roomId].users[socket.id];
 
         io.to(roomId).emit("userList", Object.values(rooms[roomId].users));
-        console.log(`🔴 ${username} left room: ${roomId}`);
+        console.log(`${username} left room: ${roomId}`);
       }
     }
   });
